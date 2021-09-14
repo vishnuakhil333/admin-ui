@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/vishnuakhil333/admin-ui/static/css/main.f68b8547.chunk.css",
+    "main.js": "/vishnuakhil333/admin-ui/static/js/main.d04856b8.chunk.js",
+    "main.js.map": "/vishnuakhil333/admin-ui/static/js/main.d04856b8.chunk.js.map",
+    "runtime-main.js": "/vishnuakhil333/admin-ui/static/js/runtime-main.c72b00bd.js",
+    "runtime-main.js.map": "/vishnuakhil333/admin-ui/static/js/runtime-main.c72b00bd.js.map",
+    "static/js/2.2584f33b.chunk.js": "/vishnuakhil333/admin-ui/static/js/2.2584f33b.chunk.js",
+    "static/js/2.2584f33b.chunk.js.map": "/vishnuakhil333/admin-ui/static/js/2.2584f33b.chunk.js.map",
+    "static/js/3.cc92a701.chunk.js": "/vishnuakhil333/admin-ui/static/js/3.cc92a701.chunk.js",
+    "static/js/3.cc92a701.chunk.js.map": "/vishnuakhil333/admin-ui/static/js/3.cc92a701.chunk.js.map",
+    "index.html": "/vishnuakhil333/admin-ui/index.html",
+    "static/css/main.f68b8547.chunk.css.map": "/vishnuakhil333/admin-ui/static/css/main.f68b8547.chunk.css.map",
+    "static/js/2.2584f33b.chunk.js.LICENSE.txt": "/vishnuakhil333/admin-ui/static/js/2.2584f33b.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/vishnuakhil333/admin-ui/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c72b00bd.js",
+    "static/js/2.2584f33b.chunk.js",
+    "static/css/main.f68b8547.chunk.css",
+    "static/js/main.d04856b8.chunk.js"
+  ]
+}
