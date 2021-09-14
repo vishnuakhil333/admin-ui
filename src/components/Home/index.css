@@ -1,0 +1,25 @@
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.userlist-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* min-width: 500px; */
+}
+.userlist-container {
+  /* list-style.position: inside; */
+  padding-inline-start: 0px;
+}
+table.userlist-container {
+  border-collapse: collapse;
+}
+table.userlist-container td {
+  border-bottom: 1px solid lightgray;
+}
+/* table.userlist-container thead {
+  border-bottom: 1px solid gray;
+} */

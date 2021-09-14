@@ -1,0 +1,19 @@
+.icons-container {
+  display: flex;
+  align-items: center;
+}
+.trash {
+  color: red;
+}
+.icon {
+  background-color: transparent;
+  border: 0;
+}
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.text-bold {
+  font-weight: 300;
+}
