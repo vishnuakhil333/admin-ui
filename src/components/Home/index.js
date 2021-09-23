@@ -13,22 +13,37 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    console.log("componentDidMount triggered");
     this.getUsersDataFromAPI();
   }
 
   getUsersDataFromAPI = async () => {
-    const apiUrl =
-      "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
-    const response = await fetch(apiUrl);
-    const usersData = await response.json();
-    this.setState({
-      filteredUsersData: usersData,
-      existingUserList: usersData,
-    });
+    let usersData = localStorage.getItem("usersData");
+    console.log("userData", usersData);
+    if (usersData == null) {
+      console.log("inside the if loop");
+      const apiUrl =
+        "https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json";
+      const response = await fetch(apiUrl);
+      usersData = await response.json();
+      const users = JSON.stringify(usersData);
+      localStorage.setItem("usersData", users);
+    }
+    /**
+     * handle the
+     */
+
+    // this.setState({
+    //   filteredUsersData: usersData,
+    //   existingUserList: usersData,
+    // });
   };
 
   getFilteredUsersData = () => {
-    const { existingUserList, searchInput, deletedUserIdList } = this.state;
+    const users = localStorage.getItem("usersData");
+    console.log("line 43 from Home", users);
+    const existingUserList = JSON.parse(users);
+    const { searchInput, deletedUserIdList } = this.state;
     const searchFilter = existingUserList.filter((user) => {
       const { name, email, role } = user;
 
@@ -38,7 +53,8 @@ class Home extends Component {
         role.toLowerCase().includes(searchInput.toLowerCase())
       );
     });
-    this.setState({ filteredUsersData: searchFilter });
+    // this.setState({ filteredUsersData: searchFilter });
+    return searchFilter;
   };
 
   onSearch = (event) => {
@@ -49,9 +65,11 @@ class Home extends Component {
   };
 
   deleteUser = (id) => {
-    const { existingUserList } = this.state;
+    // const { existingUserList } = this.state;
+    const { existingUserList } = JSON.parse(localStorage.getItem("usersData"));
     const data = existingUserList.filter((user) => !(user.id === id));
-    this.setState({ filteredUsersData: data, existingUserList: data });
+    this.setState({ existingUserList: data });
+    localStorage.setItem("usersData", data);
   };
 
   onCheckInput = (event) => {
@@ -65,11 +83,14 @@ class Home extends Component {
     const data = existingUserList.filter((user) => {
       return !selectedCheckBoxIdList.includes(user.id);
     });
-    this.setState({
-      selectedCheckBoxIdList: [],
-      existingUserList: data,
-      filteredUsersData: data,
-    });
+
+    localStorage.setItem("usersData", data);
+
+    // this.setState({
+    //   selectedCheckBoxIdList: [],
+    //   existingUserList: data,
+    //   filteredUsersData: data,
+    // });
   };
 
   addSelectedCheckboxId = (id) => {
@@ -89,16 +110,8 @@ class Home extends Component {
   };
 
   render() {
-    const {
-      filteredUsersData,
-      searchInput,
-      isAllChecked,
-      selectedCheckBoxIdList,
-    } = this.state;
-    // const filteredUsersData = this.getFilteredUsersData();
-    const userListContainerElement = document.getElementsByClassName(
-      "userlist-container"
-    );
+    const { searchInput, isAllChecked, selectedCheckBoxIdList } = this.state;
+    const filteredUsersData = this.getFilteredUsersData();
 
     return (
       <div>
@@ -113,24 +126,6 @@ class Home extends Component {
             Delete Selected
           </button>
           <div className="">
-            {/* <ul className="userlist-container">
-              <li className="table-header">
-                <input
-                  type="checkbox"
-                  className=""
-                  // onChange={onCheckedBox}
-                  //   value=
-                />
-                <p className="">Name</p>
-                <p>Email</p>
-                <p>Role</p>
-                <p>Actions</p>
-              </li>
-              {filteredUsersData.map((user) => (
-                <User key={user.id} user={user} deleteUser={this.deleteUser} />
-              ))}
-            </ul> */}
-
             <table className="userlist-container">
               <thead>
                 <tr>

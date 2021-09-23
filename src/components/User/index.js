@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 import { BiEdit } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
 import "./index.css";
@@ -27,7 +28,8 @@ class User extends Component {
     const { isChecked } = this.state;
     // console.log(isChecked);
     const { user, isAllChecked } = this.props;
-    const { name, email, role } = user;
+    const { id, name, email, role } = user;
+    console.log(user);
 
     return (
       // <li className="table-header text-bold">
@@ -65,9 +67,9 @@ class User extends Component {
         <td>{role}</td>
         <td>
           <div className="icons-container">
-            <button type="button" className="icon">
-              <BiEdit />
-            </button>
+            <Link to={{ pathname: `/update/${id}`, state: { user: user } }}>
+              <BiEdit className="icon" />
+            </Link>
             <button type="button" className="icon" onClick={this.onDelete}>
               <AiOutlineDelete className="trash" />
             </button>
